@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "tsc": "tsc -p tsconfig.json",
-    "prettier": "prettier --write --cache --cache-strategy metadata \"**/*.{tsx,ts}\"",
+    "prettier": "prettier --write --cache --cache-strategy metadata \"**/*.{vue,js}\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "commit": "npx cz"
   },
@@ -43,7 +43,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,md}": [
+    "*.{js,vue,md}": [
       "npm run prettier"
     ]
   }
