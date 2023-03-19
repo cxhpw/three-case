@@ -29,26 +29,26 @@ export default function Model(props) {
     tl.current = gsap.timeline();
 
     // VERTICAL ANIMATION
-    console.log(-FLOOR_HEIGHT * (NB_FLOORS - 1),)
+    console.log(-FLOOR_HEIGHT * (NB_FLOORS - 1));
     tl.current.to(
       ref.current.position,
       {
         duration: 2,
         y: -FLOOR_HEIGHT * (NB_FLOORS - 1),
       },
-      0
+      0,
     );
 
     // Office Rotation
     tl.current.to(
       ref.current.rotation,
       { duration: 1, x: 0, y: Math.PI / 6, z: 0 },
-      0
+      0,
     );
     tl.current.to(
       ref.current.rotation,
       { duration: 1, x: 0, y: -Math.PI / 6, z: 0 },
-      1
+      1,
     );
 
     // Office movement
@@ -59,7 +59,7 @@ export default function Model(props) {
         x: -1,
         z: 2,
       },
-      0
+      0,
     );
     tl.current.to(
       ref.current.position,
@@ -68,7 +68,7 @@ export default function Model(props) {
         x: 1,
         z: 2,
       },
-      1
+      1,
     );
 
     // LIBRARY FLOOR
@@ -78,7 +78,7 @@ export default function Model(props) {
         duration: 0.5,
         x: -2,
       },
-      0.5
+      0.5,
     );
     tl.current.from(
       libraryRef.current.rotation,
@@ -86,7 +86,7 @@ export default function Model(props) {
         duration: 0.5,
         y: -Math.PI / 2,
       },
-      0
+      0,
     );
 
     // ATTIC
@@ -96,7 +96,7 @@ export default function Model(props) {
         duration: 1.5,
         y: 2,
       },
-      0
+      0,
     );
 
     tl.current.from(
@@ -105,7 +105,7 @@ export default function Model(props) {
         duration: 0.5,
         y: Math.PI / 2,
       },
-      1
+      1,
     );
 
     tl.current.from(
@@ -114,7 +114,7 @@ export default function Model(props) {
         duration: 0.5,
         z: -2,
       },
-      1.5
+      1.5,
     );
   }, []);
 
@@ -124,8 +124,7 @@ export default function Model(props) {
       dispose={null}
       ref={ref}
       position={[0.5, -1, 1]}
-      rotation={[0, -Math.PI / 3, 0]}
-    >
+      rotation={[0, -Math.PI / 3, 0]}>
       <mesh
         geometry={nodes["01_office"].geometry}
         material={materials["01"]}
@@ -153,6 +152,6 @@ export default function Model(props) {
   );
 }
 
-Model.displayName = "Offect"
+Model.displayName = "Offect";
 
 useGLTF.preload("public/models/WawaOffice.glb");
