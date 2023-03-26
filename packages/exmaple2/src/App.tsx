@@ -1,34 +1,96 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Canvas, useFrame, createPortal } from "@react-three/fiber";
+import { useRef } from "react";
+import {
+  useFBO,
+  OrbitControls,
+  Environment,
+  PerspectiveCamera,
+  RenderTexture,
+  ScrollControls,
+  Stars,
+  Sky,
+} from "@react-three/drei";
+//@ts-ignore
+import * as THREE from "three";
+import "./App.css";
+import "./scene.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const InfinityMirror = () => {
+  const mesh = useRef<mesh>(null);
+  const renderTarget = useFBO();
+
+  useFrame(state => {
+    const { gl, scene, camera } = state;
+    mesh.current.material.map = null;
+
+    gl.setRenderTarget(renderTarget);
+    gl.render(scene, camera);
+
+    mesh.current.material.map = renderTarget.texture;
+
+    gl.setRenderTarget(null);
+  });
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <Sky sunPosition={[10, 10, 0]} />
+      <directionalLight args={[10, 10, 0]} intensity={1} />
+      <ambientLight intensity={0.5} />
+      <Environment preset="sunset" />
+      <mesh position={[-2, 0, 0]}>
+        <dodecahedronGeometry args={[1]} />
+        <meshPhysicalMaterial
+          roughness={0}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          color="#73B9ED"
+        />
+      </mesh>
+      <mesh position={[0, 2, 0]}>
+        <dodecahedronGeometry args={[1]} />
+        <meshPhysicalMaterial
+          roughness={0}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          color="#73B9ED"
+        />
+      </mesh>
+      <mesh position={[2, 0, 0]}>
+        <dodecahedronGeometry args={[1]} />
+        <meshPhysicalMaterial
+          roughness={0}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          color="#73B9ED"
+        />
+      </mesh>
+      <mesh position={[0, -2, 0]}>
+        <dodecahedronGeometry />
+        <meshPhysicalMaterial
+          roughness={0}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          color="#73B9ED"
+        />
+      </mesh>
+      <mesh ref={mesh} scale={1}>
+        <planeGeometry args={[2, 2]} />
+        <meshBasicMaterial />
+      </mesh>
+    </>
+  );
+};
+function App() {
+  const mesh = useRef();
+  return (
+    <Canvas camera={{ position: [0, 4, 4] }} dpr={[1, 2]}>
+      <Stars radius={100} fade></Stars>
+      <ambientLight intensity={0.1} />
+      <Environment preset="sunset" />
+      <mesh></mesh>
+      <OrbitControls></OrbitControls>
+    </Canvas>
+  );
 }
 
-export default App
+export default App;
