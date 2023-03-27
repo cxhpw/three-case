@@ -1,17 +1,15 @@
-import { Canvas, useFrame, createPortal } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import {
   useFBO,
-  OrbitControls,
   Environment,
-  PerspectiveCamera,
-  RenderTexture,
-  ScrollControls,
-  Stars,
   Sky,
+  ScrollControls,
+  OrbitControls,
+  Stars,
 } from "@react-three/drei";
+import Overlay from "./components/Overlay";
 //@ts-ignore
-import * as THREE from "three";
 import "./App.css";
 import "./scene.css";
 
@@ -33,6 +31,7 @@ const InfinityMirror = () => {
 
   return (
     <>
+      <color attach="background" args={["#000000"]}></color>
       <Sky sunPosition={[10, 10, 0]} />
       <directionalLight args={[10, 10, 0]} intensity={1} />
       <ambientLight intensity={0.5} />
@@ -80,16 +79,21 @@ const InfinityMirror = () => {
     </>
   );
 };
+
 function App() {
-  const mesh = useRef();
   return (
-    <Canvas camera={{ position: [0, 4, 4] }} dpr={[1, 2]}>
-      <Stars radius={100} fade></Stars>
-      <ambientLight intensity={0.1} />
-      <Environment preset="sunset" />
-      <mesh></mesh>
-      <OrbitControls></OrbitControls>
-    </Canvas>
+    <>
+      <Canvas camera={{ position: [0, 4, 4] }} dpr={[1, 2]}>
+        <color attach="background" args={["#000000"]}></color>
+        <Stars radius={100} fade></Stars>
+        <ambientLight intensity={0.1} />
+        <Environment preset="sunset" />
+        <OrbitControls enableZoom={false}></OrbitControls>
+        <ScrollControls pages={3} damping={0.5}>
+          <Overlay></Overlay>
+        </ScrollControls>
+      </Canvas>
+    </>
   );
 }
 

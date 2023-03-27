@@ -1,9 +1,8 @@
-import { Scroll } from "@react-three/drei";
+import { Scroll, useScroll } from "@react-three/drei";
 import { useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
 
-const Section = props => {
+const Section = (props: any) => {
   return (
     <section
       className={`h-screen flex flex-col justify-center p-10 ${
@@ -29,6 +28,7 @@ const Overlay = () => {
   const [opacityLastSection, setOpacityLastSection] = useState(1);
   const scroll = useScroll();
   useFrame((state, delta, xrFrame) => {
+    console.log(delta)
     setOpacityFirstSection(1 - scroll.range(0, 1 / 3));
     setOpacitySecondSection(scroll.curve(1 / 3, 1 / 3));
     setOpacityLastSection(scroll.range(2 / 3, 1 / 3));
@@ -89,4 +89,5 @@ const Overlay = () => {
     </Scroll>
   );
 };
-export default Overlay;
+
+export default Overlay
