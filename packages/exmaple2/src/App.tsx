@@ -9,6 +9,7 @@ import {
   Stars,
 } from "@react-three/drei";
 import Overlay from "./components/Overlay";
+import Gradient from "./components/Gradient";
 //@ts-ignore
 import "./App.css";
 import "./scene.css";
@@ -83,13 +84,12 @@ const InfinityMirror = () => {
 function App() {
   return (
     <>
-      <Canvas camera={{ position: [0, 4, 4] }} dpr={[1, 2]}>
+      <Canvas dpr={[1, 2]}>
         <color attach="background" args={["#000000"]}></color>
         <Stars radius={100} fade></Stars>
-        <ambientLight intensity={0.1} />
         <Environment preset="sunset" />
-        <OrbitControls enableZoom={false}></OrbitControls>
         <ScrollControls pages={3} damping={0.5}>
+          <Gradient></Gradient>
           <Overlay></Overlay>
         </ScrollControls>
       </Canvas>
