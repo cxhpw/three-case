@@ -10,6 +10,7 @@ import {
 } from "@react-three/drei";
 import Overlay from "./components/Overlay";
 import Gradient from "./components/Gradient";
+import Butterfly from "./components/Butterfly";
 //@ts-ignore
 import "./App.css";
 import "./scene.css";
@@ -84,14 +85,15 @@ const InfinityMirror = () => {
 function App() {
   return (
     <>
-      <Canvas dpr={[1, 2]}>
+      <Canvas shadows>
         <color attach="background" args={["#000000"]}></color>
-        <Stars radius={100} fade></Stars>
+        {/* <Stars radius={100} fade></Stars>
         <Environment preset="sunset" />
         <ScrollControls pages={3} damping={0.5}>
           <Gradient></Gradient>
           <Overlay></Overlay>
-        </ScrollControls>
+        </ScrollControls> */}
+        <Butterfly />
       </Canvas>
     </>
   );
