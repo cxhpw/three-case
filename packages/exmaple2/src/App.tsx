@@ -11,6 +11,7 @@ import {
 import Overlay from "./components/Overlay";
 import Gradient from "./components/Gradient";
 import Butterfly from "./components/Butterfly";
+import Practice from './components/practice'
 //@ts-ignore
 import "./App.css";
 import "./scene.css";
@@ -85,7 +86,7 @@ const InfinityMirror = () => {
 function App() {
   return (
     <>
-      <Canvas shadows>
+      <Canvas camera={{ position: [0.0, 0.0, 1.0] }}>
         <color attach="background" args={["#000000"]}></color>
         {/* <Stars radius={100} fade></Stars>
         <Environment preset="sunset" />
@@ -93,7 +94,8 @@ function App() {
           <Gradient></Gradient>
           <Overlay></Overlay>
         </ScrollControls> */}
-        <Butterfly />
+        {/* <Butterfly /> */}
+        <Practice />
       </Canvas>
     </>
   );

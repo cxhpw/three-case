@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-three/postprocessing": "^2.7.1",
+    "@types/three": "^0.150.1",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

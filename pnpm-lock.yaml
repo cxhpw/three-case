@@ -87,6 +87,7 @@ importers:
       '@react-three/postprocessing': ^2.7.1
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
+      '@types/three': ^0.150.1
       '@vitejs/plugin-react': ^3.1.0
       bootstrap: ^5.2.3
       react: ^18.2.0
@@ -96,6 +97,7 @@ importers:
       vite: ^4.1.0
     dependencies:
       '@react-three/postprocessing': 2.7.1_react@18.2.0
+      '@types/three': 0.150.1
       bootstrap: 5.2.3
       react: 18.2.0
       react-bootstrap: 2.7.2_zula6vjvt3wdocc4mwcxqa6nzi
@@ -1108,8 +1110,25 @@ packages:
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
 
+  /@types/stats.js/0.17.0:
+    resolution: {integrity: sha512-9w+a7bR8PeB0dCT/HBULU2fMqf6BAzvKbxFboYhmDtDkKPiyXYbjoe2auwsXlEFI7CFNMF1dCv3dFH5Poy9R1w==}
+    dev: false
+
+  /@types/three/0.150.1:
+    resolution: {integrity: sha512-ZXS1M3brsfAAbTeeUEt0defPi98yWQuEyPBnvjEYY1dCEYfJnFaww0mYgRpJ9JVfmtwRxqISpVcv/g/0lMl1DQ==}
+    dependencies:
+      '@types/stats.js': 0.17.0
+      '@types/webxr': 0.5.1
+      fflate: 0.6.10
+      lil-gui: 0.17.0
+    dev: false
+
   /@types/warning/3.0.0:
     resolution: {integrity: sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==}
+    dev: false
+
+  /@types/webxr/0.5.1:
+    resolution: {integrity: sha512-xlFXPfgJR5vIuDefhaHuUM9uUgvPaXB6GKdXy2gdEh8gBWQZ2ul24AJz3foUd8NNKlSTQuWYJpCb1/pL81m1KQ==}
     dev: false
 
   /@use-gesture/core/10.2.24:
@@ -2997,6 +3016,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lil-gui/0.17.0:
+    resolution: {integrity: sha512-MVBHmgY+uEbmJNApAaPbtvNh1RCAeMnKym82SBjtp5rODTYKWtM+MXHCifLe2H2Ti1HuBGBtK/5SyG4ShQ3pUQ==}
+    dev: false
 
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
